@@ -1,0 +1,12 @@
+{
+  "name": "dino-run",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Dino Run - pixel-art runner: the game files and the server that keeps the shared leaderboard",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
