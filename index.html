@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-visual">
+<title>Dino Run</title>
+<meta name="description" content="Dino Run - a pixel-art runner. Fly the dino, win photos, climb the leaderboard.">
+<meta name="theme-color" content="#ffffff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta property="og:title" content="Dino Run"><meta property="og:description" content="Pixel-art runner. Beat my score!"><meta property="og:type" content="website"><meta property="og:image" content="og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<link rel="stylesheet" href="style.css"></head><body>
+<main id="app" data-st="home" data-p="" data-q="">
+<canvas id="c" aria-label="Dino Run"></canvas>
+<nav id="bar"><button class="ib" id="bh" aria-label="Home"><canvas class="ic" data-i="home" data-k="3"></canvas></button><span class="sp"></span>
+<button class="ib" id="bc" aria-label="Camera"><canvas class="ic" data-i="cam" data-k="3"></canvas></button>
+<button class="ib" id="bs" aria-label="Settings"><canvas class="ic" data-i="gear" data-k="3"></canvas></button></nav>
+<div id="hud"><canvas id="hs"></canvas><div id="hrow"><button id="lbb" aria-label="Leaderboard"><canvas class="ic" data-i="trophy" data-k="3"></canvas></button><canvas id="hh"></canvas></div></div>
+<button id="tut" aria-label="How to play"><canvas class="pt" data-t="?" data-k="6"></canvas></button>
+<button id="play" aria-label="Resume"><canvas class="ic" data-i="play" data-k="14"></canvas></button>
+<div id="over"><canvas id="gt"></canvas><button id="retry" aria-label="Play again"><canvas id="ri"></canvas></button></div>
+<div id="fc"><div id="ft"><canvas id="fm"></canvas><button id="fx" aria-label="Close"><canvas class="ic" data-i="x" data-k="2"></canvas></button></div></div>
+<div id="scrim"></div>
+<section id="set" class="sheet"><div class="hd"><i class="gp"></i><button class="x" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button><canvas class="pt" data-t="Settings" data-k="2.5"></canvas></div>
+<div class="bd"><div class="rw"><canvas class="pt" data-t="Size" data-k="1.5"></canvas></div>
+<div id="sl"><i class="tk"></i><button data-z=".85" aria-label="Small"></button><button data-z="1" aria-label="Standard"></button><button data-z="1.2" aria-label="Large"></button><i class="th"></i><canvas class="pt l" data-t="Small" data-k="1.5" data-c="#b4b4ae"></canvas><canvas class="pt r" data-t="Large" data-k="1.5" data-c="#b4b4ae"></canvas></div>
+<div class="rw"><canvas class="pt" data-t="Auto-rotate" data-k="1.5"></canvas><button id="rot" role="switch" aria-checked="true" aria-label="Auto-rotate"><b></b></button></div>
+<div class="rw"><canvas class="pt" data-t="Colours" data-k="1.5"></canvas></div>
+<div id="th"><button data-t="0" aria-label="Classic" style="--a:#141413;--b:#141413;--c:#141413"></button><button data-t="1" aria-label="Candy" style="--a:#ff5c8a;--b:#3cc79a;--c:#6c63ff"></button><button data-t="2" aria-label="Ocean" style="--a:#1e88e5;--b:#00a896;--c:#3949ab"></button><button data-t="3" aria-label="Sunset" style="--a:#ff7043;--b:#ab47bc;--c:#5c6bc0"></button><button data-t="4" aria-label="Forest" style="--a:#43a047;--b:#7cb342;--c:#6d4c41"></button><button data-t="5" aria-label="Gold" style="--a:#f9a825;--b:#26a69a;--c:#455a64"></button></div></div></section>
+<section id="help" class="sheet"><div class="hd"><i class="gp"></i><button class="x" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button><canvas class="pt" data-t="How to play" data-k="2.5"></canvas></div>
+<div class="bd" id="hb">
+<article class="cd" style="--bg:var(--peach)"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Jump" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Tap above the ground. Or press space." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:var(--sky)"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Duck" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Hold the lower screen. Let go to run." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:var(--lav)"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Fly" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Drag the dino up high. The sky wakes up." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:var(--mint)"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Camera" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Tap the camera for three photos. Save them or share." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:var(--sun)"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Settings" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Slide the size. Set rotate. Pick a colour set." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:var(--rose)"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Music" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Lift the dino into the sky. Music and weather begin." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:#f3e8ff"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Leaderboard" data-tp="Score" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Tap the trophy. Top three shine. Scores add up." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:#e8f6ff"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Profile" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Tap the pencil. Pick a photo and a name." data-k="1.5" data-c="#4a4a46"></canvas></div></article>
+<article class="cd" style="--bg:#fff0f5"><canvas class="dm" width="460" height="240"></canvas><div><canvas class="pt" data-f="1" data-t="Photos" data-k="2.5"></canvas><canvas class="pt" data-w="1" data-t="Tap a photo. Pinch or double-tap to zoom. Swipe for more." data-k="1.5" data-c="#4a4a46"></canvas></div></article></div>
+</section>
+<section id="shr" class="sheet"><div class="hd"><i class="gp"></i><button class="x" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button>
+<div class="ha"><button class="cb" id="shk" aria-label="Save selected photos" disabled><canvas class="ic" data-i="ok" data-k="2.5" data-c="#1f7a45"></canvas></button><button class="cb" id="shs" aria-label="Share selected photos" disabled><canvas class="ic" data-i="shr" data-k="2.5" data-c="#1d4fb8"></canvas></button></div></div>
+<div class="cm"><div id="pv"></div><div id="pg"></div></div><p id="shc" hidden></p><p id="shl" hidden></p></section>
+<section id="lb"><div class="lh"><button class="x" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button><canvas class="pt" data-t="Leaderboard" data-k="3"></canvas><button class="lsh" id="lsh" aria-label="Share"><canvas class="ic" data-i="shr" data-k="3"></canvas></button></div>
+<div id="me"><div class="av" id="mav"></div><canvas id="mn"></canvas><button id="pe" aria-label="Edit profile"><canvas class="ic" data-i="pen" data-k="3"></canvas></button></div><div id="lr"></div></section>
+<div id="scrim2"></div>
+<section id="ssh" class="sheet" aria-label="Share"><div class="hd"><button class="x" id="ssx" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button></div>
+<div id="sgr"><div id="sg"></div></div>
+<div id="syt"><canvas id="syl"></canvas><canvas id="syn"></canvas><div class="ld"><i></i><i></i><i></i></div></div></section>
+<div id="pm"><div class="pw"><div class="card"><button class="x" id="pmx" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button><canvas id="pc" aria-label="Photo"></canvas>
+<div class="nm"><label class="fld"><canvas class="pt" data-t="@" data-k="2.5"></canvas><input id="pn" maxlength="13" enterkeyhint="done" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" aria-label="Name"></label><button id="pp" aria-label="Photo"><canvas class="ic" data-i="cam" data-k="2"></canvas></button></div>
+<button class="cb" id="po" aria-label="Save"><canvas class="ic" data-i="ok" data-k="3" data-c="#1f7a45"></canvas></button><canvas id="pr"></canvas></div></div></div>
+<input id="pf" type="file" accept="image/*" hidden>
+<div id="cp"><canvas class="pt" data-t="Try a colour" data-k="1.5"></canvas><div class="sw"><button data-c="1" style="background:#ff5c8a" aria-label="Pink"></button><button data-c="3" style="background:#ff8a3d" aria-label="Orange"></button><button data-c="4" style="background:#43b05c" aria-label="Green"></button></div><button class="x" id="cx" aria-label="Cancel"><canvas class="ic" data-i="x" data-k="2"></canvas></button></div>
+<div id="zm"><button class="xz" id="zx" aria-label="Close"><canvas class="ic" data-i="x" data-k="3"></canvas></button><img id="zmi" alt="Photo" draggable="false"></div>
+<canvas id="cel" aria-hidden="true"></canvas>
+<canvas id="toast"></canvas>
+</main>
+<script src="config.js"></script>
+<script src="net.js"></script>
+<script src="fx.js"></script>
+<script src="sheets.js"></script>
+<script src="share.js"></script>
+<script src="game.js"></script>
+</body></html>

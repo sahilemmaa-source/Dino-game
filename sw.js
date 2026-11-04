@@ -1,0 +1,6 @@
+// offline support: network first, cache fallback (works with data off). The shared leaderboard (/api) is never cached here.
+const V='dino-run-v2',F=['./','index.html','style.css','config.js','net.js','fx.js','sheets.js','share.js','game.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','og.png',
+'logos/youtube.svg','logos/youtube-wordmark.svg','logos/whatsapp.svg','logos/whatsapp-wordmark.svg','logos/instagram.svg','logos/instagram-wordmark.svg','logos/telegram.svg','logos/telegram-wordmark.svg','logos/snapchat.svg','logos/snapchat-wordmark.svg','logos/google.svg','logos/google-wordmark.svg','logos/messages.svg'];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(F.map(u=>c.add(u).catch(()=>0)))).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==location.origin||u.pathname.indexOf('/api/')>=0)return;e.respondWith(fetch(r).then(res=>{if(res&&res.ok){const cp=res.clone();caches.open(V).then(c=>c.put(r,cp))}return res}).catch(()=>caches.match(r).then(m=>m||caches.match('index.html'))))});
